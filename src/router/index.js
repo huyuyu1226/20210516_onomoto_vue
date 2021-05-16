@@ -1,0 +1,47 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+import Main from '../views/Main.vue'
+import Edit from "../views/Edit.vue"
+import About from "../views/About.vue"
+
+Vue.use(VueRouter)
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/main',
+    name: 'name',
+    component: Main,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/edit",
+    name: 'edit',
+    component: Edit,
+    meta: {
+      requiresAuth: true
+    }
+  }
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
+
+
+
+export default router
