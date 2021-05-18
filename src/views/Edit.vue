@@ -25,10 +25,13 @@ export default {
      edit() {
        axios.put('http://127.0.0.1:8000/api/user',
       {
-        emai:this.email,
+        email:this.email,
         name:this.Newname
       })
-      .then(response => (console.log(response)))
+      .then((response => {
+        console.log(response);
+        this.$store.commit('changeName',response.data.name)
+      }))
       .catch(error => console.log(error))
     },
   },
